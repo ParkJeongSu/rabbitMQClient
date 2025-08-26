@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jspark.rabbitMQClient.controller.MainController" spacing="10" >
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <HBox spacing="10">
+        <TextField fx:id="exchangeField" promptText="Exchange"/>
+        <TextField fx:id="routingKeyField" promptText="Routing Key"/>
+    </HBox>
+    <TextArea fx:id="messageToSendArea" promptText="보낼 메시지 입력"/>
+    <Button onAction="#handleSendAction" text="메시지 발송"/>
+    <Label text="수신된 메시지:"/>
+    <TextArea fx:id="receivedMessagesArea" editable="false" prefHeight="200"/>
+</VBox>
