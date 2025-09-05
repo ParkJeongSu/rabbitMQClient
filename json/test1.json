@@ -1,0 +1,16 @@
+{
+  "header": {
+    "messageName": "test1",
+    "transactionId": "202508201234",
+    "replyQueueName": "abc",
+    "eventUser": "MachineName1",
+    "eventcomment": "comment1"
+  },
+  "body": {
+    "machineName": "machineName1"
+  },
+  "reply": {
+    "returnCode": 0,
+    "returnMessgae": "abc"
+  }
+}

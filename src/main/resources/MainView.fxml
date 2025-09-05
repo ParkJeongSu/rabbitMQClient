@@ -4,17 +4,31 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.geometry.Insets?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jspark.rabbitMQClient.controller.MainController" spacing="10" >
+
+<HBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jspark.rabbitMQClient.controller.MainController" spacing="10" >
     <padding>
         <Insets top="10" right="10" bottom="10" left="10"/>
     </padding>
 
-    <HBox spacing="10">
-        <TextField fx:id="exchangeField" promptText="Exchange"/>
-        <TextField fx:id="routingKeyField" promptText="Routing Key"/>
-    </HBox>
-    <TextArea fx:id="messageToSendArea" promptText="보낼 메시지 입력"/>
-    <Button onAction="#handleSendAction" text="메시지 발송"/>
-    <Label text="수신된 메시지:"/>
-    <TextArea fx:id="receivedMessagesArea" editable="false" prefHeight="200"/>
-</VBox>
+    <VBox spacing="10" HBox.hgrow="ALWAYS">
+        <HBox spacing="10">
+            <TextField fx:id="exchangeField" promptText="Exchange" HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="routingKeyField" promptText="Routing Key" HBox.hgrow="ALWAYS"/>
+        </HBox>
+        <TextArea fx:id="messageToSendArea" promptText="보낼 메시지 입력" VBox.vgrow="ALWAYS"/>
+        <HBox spacing="10">
+            <Button onAction="#handleSendAction" text="메시지 발송" />
+            <Button onAction="#handleAddAction" text="추가" />
+            <Button onAction="#handleModifyAction" text="수정" />
+            <Button onAction="#handleDeleteAction" text="삭제" />
+        </HBox>
+        <Label text="수신된 메시지:"/>
+        <TextArea fx:id="receivedMessagesArea" editable="false" prefHeight="200"/>
+    </VBox>
+
+    <VBox spacing="10" HBox.hgrow="ALWAYS">
+        <Label text="JSON 파일 목록:"/>
+        <ListView fx:id="jsonFilesListView" VBox.vgrow="ALWAYS" onMouseClicked="#handleJsonFileSelection"/>
+    </VBox>
+
+</HBox>

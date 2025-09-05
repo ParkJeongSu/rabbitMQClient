@@ -18,6 +18,7 @@ public class RabbitConfig {
     RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory, MessageConverter messageConverter) {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(messageConverter);
+        rabbitTemplate.setReplyTimeout(10000); // 10초(10000ms)로 타임아웃 설정
         return rabbitTemplate;
     }
 
