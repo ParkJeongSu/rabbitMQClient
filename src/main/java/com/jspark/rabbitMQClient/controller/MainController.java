@@ -1,12 +1,11 @@
 package com.jspark.rabbitMQClient.controller;
 
-import com.jspark.rabbitMQClient.service.RabbitMQService;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,14 +17,14 @@ public class MainController {
     @FXML private TextArea messageToSendArea;
     @FXML private TextArea receivedMessagesArea;
 
-    private final RabbitMQService rabbitMQService;
+    private final RabbitTemplate rabbitTemplate;
 
     @FXML
     private void handleSendAction() {
         String exchange = exchangeField.getText();
         String routingKey = routingKeyField.getText();
         String message = messageToSendArea.getText();
-        rabbitMQService.sendMessage(exchange, routingKey, message);
+        rabbitTemplate.convertAndSend(exchange, routingKey, message);
         messageToSendArea.clear();
     }
 
